@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, redirect
+from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+@login_required(redirect_field_name='login')
+def index(request):
+
+  
+    return render(request, 'pages/index.html')
