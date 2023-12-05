@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   
+    
+    <title>Document</title>
+</head>
+<body>
+    <h1> Adicionar a enquete</h1>
+    <form method="POST"  class="container mt-5" enctype="multipart/form-data">{% csrf_token %}
+        <input type="text" name="titulo" placeholder="Titulo"><br>
+        <input type="text" name="pergunta" placeholder="Pergunta"><br>        <label for="ligaDesliga">Ligar/Desligar</label><br>
+        <button type="submit">Salvar</button>
+    </form>
+    <form method="GET"  class="container mt-5" enctype="multipart/form-data">{% csrf_token %}
+        <input type="text" name="resposta" placeholder="resposta"><br>
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
