@@ -10,16 +10,41 @@
     
     <title>Document</title>
 </head>
+
 <body>
-    <h1> Adicionar a enquete</h1>
-    <form method="POST"  class="container mt-5" enctype="multipart/form-data">{% csrf_token %}
-        <input type="text" name="titulo" placeholder="Titulo"><br>
-        <input type="text" name="pergunta" placeholder="Pergunta"><br>        <label for="ligaDesliga">Ligar/Desligar</label><br>
-        <button type="submit">Salvar</button>
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <h1> Adicionar a enquete</h1>
+            <a href="{% url 'logout' %}" class="btn btn-primary mt-5 mb-1">Sair</a>
+            <a href="{% url 'home' %}" class="btn btn-primary mt-5 mb-1">voltar</a>
+            <a href="{% url 'minhas_enquetes' %}" class="btn btn-primary mt-5 mb-1">Minhas enquetes</a>
+        </nav>
+    </header>
+    <form method="post" id="perguntaForm">
+        {% csrf_token %}
+        <input type="text" name="titulo" placeholder="Título">
+        <input type="text" name="pergunta" placeholder="Pergunta">
+        <div id="opcoes_resposta">
+            <input type="text" name="opcao_resposta" placeholder="Opção de Resposta 1">
+            <input type="text" name="opcao_resposta" placeholder="Opção de Resposta 2">
+            <!-- Adicione mais campos de opção de resposta aqui -->
+        </div>
+        <button type="button" id="addOpcao">Adicionar Opção</button>
+        <button type="submit">Enviar</button>
     </form>
-    <form method="GET"  class="container mt-5" enctype="multipart/form-data">{% csrf_token %}
-        <input type="text" name="resposta" placeholder="resposta"><br>
-        <button type="submit">Salvar</button>
-    </form>
+    
+ 
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var count = 2; // Contador para acompanhar o número de campos de opção de resposta
+
+        $('#addOpcao').click(function() {
+            var newInput = '<input type="text" name="opcao_resposta" placeholder="Opção de Resposta ' + count + '">';
+            $('#opcoes_resposta').append(newInput);
+            count++;
+        });
+    });
+</script>
