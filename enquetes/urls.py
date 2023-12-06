@@ -13,6 +13,6 @@ urlpatterns = [
   path('historico_enquetes/', views.historico_enquetes, name='historico_enquetes'),
   path('add-enquete/<int:id>', views.add_enquete, name='add-enquete'),
   path('desativar-enquete/<int:pergunta_id>/', views.desativar_enquete, name='desativar_enquete'),
-  path('resultados_enquete/<int:pergunta_id>/', views.resultados_pergunta, name='resultados_enquete'),
+  path('resultados_enquete/<int:pergunta_id>/', views.resultados_enquete, name='resultados_enquete'),
 
 ]
