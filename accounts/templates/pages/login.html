@@ -9,7 +9,21 @@
 </head>
 <body>
     <h1>Login</h1>
-    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %} alert-{{ message.tags }} {% endif %} mt-2">
+                <h3>{{ message }}</h3>
+            </div>
+        {% endfor %}
+        <script>
+            setTimeout(function() {
+                var alerts = document.querySelectorAll('.alert');
+                alerts.forEach(function(alert) {
+                    alert.style.display = 'none';
+                });
+            }, 3000); 
+        </script>
+    {% endif %}
     <form action="" method="POST"> {% csrf_token %}
         <input type="text" name="username">
         <input type="text" name="password">

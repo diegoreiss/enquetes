@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   
+    
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <h1> Adicionar a enquete</h1>
+            <a href="{% url 'logout' %}" class="btn btn-primary mt-5 mb-1">Sair</a>
+            <a href="{% url 'home' %}" class="btn btn-primary mt-5 mb-1">voltar</a>
+            <a href="{% url 'minhas_enquetes' %}" class="btn btn-primary mt-5 mb-1">Minhas enquetes</a>
+        </nav>
+    </header>
+    <form method="post">
+        {% csrf_token %}
+        <h3>{{ pergunta.titulo }}</h3>
+        <p>{{ pergunta.pergunta }}</p>
+    
+        {% for opcao in opcoes %}
+            <input type="radio" name="opcao_escolhida" value="{{ opcao.id }}">
+            <label>{{ opcao.texto_opcao }}</label><br>
+        {% endfor %}
+    
+        <button type="submit">Enviar Resposta</button>
+    </form>
+    
+ 
+</body>
+</html>
