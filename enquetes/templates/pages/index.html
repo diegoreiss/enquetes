@@ -20,11 +20,11 @@
             {% else %}
             <a href="{% url 'login' %}" class="btn btn-primary mt-5  ml-auto">Login</a>
             {% endif %}
-            <a href="{% url 'resultados' %}" class="btn btn-primary mt-5 mb-1 ml-2">Resultados</a>
+            <a href="{% url 'add-pergunta' %}" class="btn btn-success mt-5 mb-1 ml-2">Nova enquete</a>
             {% if user.is_authenticated %}
             <a href="{% url 'minhas_enquetes' %}" class="btn btn-warning mt-5 mb-1 ml-2">Minhas enquetes</a>
             {% endif %}
-            <a href="{% url 'add-pergunta' %}" class="btn btn-success mt-5 mb-1 ml-2">Nova enquete</a>
+            <a href="{% url 'resultados' %}" class="btn btn-primary mt-5 mb-1 ml-2">Resultados</a>
         </nav>
         
     </header>
