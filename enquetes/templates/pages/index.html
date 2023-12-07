@@ -49,9 +49,9 @@
         <div class="d-flex justify-content-center m-5"><h2 class="font-weight-light">Todas as Perguntas Disponíveis</h2></div>
         <table class="table">
             <thead>
-                <tr >
-                    <th>Cod</th>
-                    <th>Autor</th>
+                <tr>
+                    <th >Cod</th>
+                    <th >Autor</th>
                     <th>Título</th>
                     <th>Pergunta</th>
                     <th>Data de Criação</th>
@@ -63,8 +63,8 @@
             <tbody>
                 {% for pergunta in perguntas %}
                     <tr>
-                        <td>{{ pergunta.id }}</td>
-                        <td>{{ pergunta.user.first_name }}</td>
+                        <td >{{ pergunta.id }}</td>
+                        <td >{{ pergunta.user.first_name }}</td>
                         <td>{{ pergunta.titulo }}</td>
                         <td>{{ pergunta.pergunta }}</td>
                         <td>{{ pergunta.data_criacao }}</td>
