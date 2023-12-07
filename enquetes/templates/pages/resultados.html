@@ -22,7 +22,7 @@
             <a href="{% url 'home' %}" class="btn btn-secondary mt-5 mb-1 ml-2">voltar</a>
         </nav>
     </header>
-    <main>
+    <main class="container mx-auto">
         
         {% if messages %}
             {% for message in messages %}
@@ -40,7 +40,7 @@
             </script>
         {% endif %}
 
-        <h2>Todas as Perguntas Respondidas</h2>
+        <div class="d-flex justify-content-center"><h2 class="font-weight-light m-5">Todas as Perguntas Respondidas</h2></div>
         <table class="table">
             <thead>
                 <tr>
