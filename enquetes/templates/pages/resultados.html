@@ -39,7 +39,7 @@
             </script>
         {% endif %}
 
-        <h2>Todas as Perguntas</h2>
+        <h2>Todas as Perguntas Respondidas</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -57,7 +57,7 @@
             <tbody>
                 {% for pergunta in perguntas %}
                     <tr>
-                        <td>encerrar</td>
+                        <td><a href="{% url 'resultados_enquete' pergunta.id  %}" class="btn btn-primary">Resultado</a></td>
                         <td>{{ pergunta.id }}</td>
                         <td>{{ pergunta.user.first_name }}</td>
                         <td>{{ pergunta.titulo }}</td>
