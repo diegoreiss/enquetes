@@ -34,18 +34,15 @@ def add_pergunta(request):
         pergunta_texto = request.POST.get('pergunta')
         opcoes_resposta = request.POST.getlist('opcao_resposta')
         
-        # Criação da pergunta
         nova_pergunta = Pergunta.objects.create(
-            user=request.user,  # ou defina o usuário de alguma maneira
+            user=request.user, 
             titulo=titulo,
             pergunta=pergunta_texto,
             cod=randint(100, 10000),
             data_criacao=datetime.now(),
             active=True,
-            total_respostas=0
         )
         
-        # Adicionar opções de resposta à pergunta criada
         for opcao_texto in opcoes_resposta:
             OpcaoResposta.objects.create(
                 pergunta=nova_pergunta,
@@ -67,6 +64,10 @@ def desativar_enquete(request, pergunta_id):
     ranking = resultados.values('opcao_escolhida__texto_opcao') \
         .annotate(total=Count('opcao_escolhida')) \
         .order_by('-total')
+    
+    if not ranking:
+        return redirect('minhas_enquetes')
+
     mais_votado = max(ranking, key=lambda opcao: opcao['total'])
     
     ranking_text = f'A Enquete com o título {pergunta.titulo}, ' + \
@@ -105,7 +106,6 @@ def add_enquete(request, id):
         )
 
         
-        pergunta.total_respostas += 1
         pergunta.save()
 
         return redirect('home')
