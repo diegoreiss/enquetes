@@ -8,12 +8,13 @@ def user_login(request):
     if request.method == 'POST':
         user = request.POST.get('username')
         password = request.POST.get('password')
+        print(request.POST)
 
         userVerify = auth.authenticate(
             request, username=user, password=password)
         
         if userVerify == None:
-            messages.info(request, 'Usuário ou senha incorretos seu tanso!')
+            messages.info(request, 'Usuário ou senha incorretos!')
             return redirect('login')
         else:
             auth.login(request, userVerify)
