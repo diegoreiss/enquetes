@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-   
+    <link rel="stylesheet" href="{% static 'css/add-enquete.css' %}">
     
     <title>Document</title>
 </head>
@@ -15,36 +15,43 @@
     <header>
         <nav class="navbar navbar-light bg-light">
             <h1> Adicionar a enquete</h1>
-            <a href="{% url 'logout' %}" class="btn btn-primary mt-5 mb-1">Sair</a>
-            <a href="{% url 'home' %}" class="btn btn-primary mt-5 mb-1">voltar</a>
-            <a href="{% url 'minhas_enquetes' %}" class="btn btn-primary mt-5 mb-1">Minhas enquetes</a>
+            <a href="{% url 'minhas_enquetes' %}" class="btn btn-primary mt-5 mb-1 ml-auto">Minhas enquetes</a>
+            <a href="{% url 'home' %}" class="btn btn-secondary mt-5 mb-1 voltar ml-2">voltar</a>
+            <a href="{% url 'logout' %}" class="btn btn-danger mt-5 mb-1 sair ml-2">Sair</a>
         </nav>
     </header>
+    {% block content %}
+    <div class="container mt-5">
     <form method="post" id="perguntaForm">
         {% csrf_token %}
-        <input type="text" name="titulo" placeholder="Título">
-        <input type="text" name="pergunta" placeholder="Pergunta">
-        <div id="opcoes_resposta">
-            <input type="text" name="opcao_resposta" placeholder="Opção de Resposta 1">
-            <input type="text" name="opcao_resposta" placeholder="Opção de Resposta 2">
+        <div class="form-group">
+            <label for="titulo">Título:</label>
+            <input type="text" class="form-control" name="titulo" id="titulo" >
+        </div>
+        <div class="form-group">
+            <label for="pergunta">Pergunta:</label>
+            <input type="text" class="form-control" name="pergunta" id="pergunta">
+        </div>
+        <div id="opcoes_resposta" class="form-group">
+            <label>Opções de Resposta:</label>
+            <input type="text" class="form-control" name="opcao_resposta" placeholder="Opção de Resposta 1">
+            <input type="text" class="form-control" name="opcao_resposta" placeholder="Opção de Resposta 2">
             <!-- Adicione mais campos de opção de resposta aqui -->
         </div>
-        <button type="button" id="addOpcao">Adicionar Opção</button>
-        <button type="submit">Enviar</button>
+        <button type="button" class="btn btn-primary" id="addOpcao">Adicionar Opção</button>
+        <button type="submit" class="btn btn-success">Enviar</button>
     </form>
-    
- 
-</body>
-</html>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        var count = 2; // Contador para acompanhar o número de campos de opção de resposta
-
-        $('#addOpcao').click(function() {
-            var newInput = '<input type="text" name="opcao_resposta" placeholder="Opção de Resposta ' + count + '">';
-            $('#opcoes_resposta').append(newInput);
-            count++;
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var count = 2; // Contador para acompanhar o número de campos de opção de resposta
+  
+            $('#addOpcao').click(function() {
+                var newInput = '<input type="text" class="form-control" name="opcao_resposta" placeholder="Opção de Resposta ' + count + '">';
+                $('#opcoes_resposta').append(newInput);
+                count++;
+            });
         });
-    });
-</script>
+    </script>
+  {% endblock %}
