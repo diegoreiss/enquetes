@@ -65,63 +65,17 @@
                   <p>Você não tem uma conta? <a href="{% url 'add-user' %}" class="link-info">Registrar-se</a></p>
       
                 </form>
-      
-              </div>
-      
+
             </div>
-            <div class="col-sm-6 px-0 d-none d-sm-block">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img3.webp"
-                alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
-            </div>
+    
+          </div>
+          <div class="col-sm-6 px-0 d-none d-sm-block">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img3.webp"
+              alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
           </div>
         </div>
+      </div>
     </section>
-    <!--==================== LOGIN ====================-->
-    <!-- <div class="login" id="login">
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert {% if message.tags %} alert-{{ message.tags }} {% endif %} mt-2">
-                    <h3>{{ message }}</h3>
-                </div>
-            {% endfor %}
-            <script>
-                setTimeout(function() {
-                    var alerts = document.querySelectorAll('.alert');
-                    alerts.forEach(function(alert) {
-                        alert.style.display = 'none';
-                    });
-                }, 3000); 
-            </script>
-        {% endif %}
-        <form action="" class="login__form" method="POST"> {% csrf_token %}
-           <h2 class="login__title">Login</h2>
-           
-           <div class="login__group">
-              <div>
-                 <label for="username" class="login__label">Nome</label>
-                 <input type="text" placeholder="Nome" id="username" class="login__input" name="username">
-              </div>
-              
-              <div>
-                 <label for="password" class="login__label">Senha</label>
-                 <input type="password" placeholder="Senha" id="password" class="login__input" name="password">
-              </div>
-           </div>
-
-           <div>
-              <p class="login__signup">
-                 You do not have an account? <a href="{% url 'add-user' %}">registrar-se</a>
-              </p>
-  
-              <a href="#" class="login__forgot">
-                 You forgot your password
-              </a>
-  
-              <button type="submit" class="login__button">Entrar</button>
-           </div>
-        </form>
-
-        <i class="ri-close-line login__close" id="login-close"></i>
-     </div> -->
+    
  </body>
 </html> 
