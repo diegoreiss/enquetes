@@ -8,7 +8,6 @@ def user_login(request):
     if request.method == 'POST':
         user = request.POST.get('username')
         password = request.POST.get('password')
-        
 
         userVerify = auth.authenticate(
             request, username=user, password=password)
@@ -23,25 +22,38 @@ def user_login(request):
 
         return render(request,'pages/login.html')
 
-def add_user(request ):
-  if request.method == 'POST':
+from django.contrib import messages
 
-    name = request.POST.get('name')
-    usuario = request.POST.get('usuario')
-    email = request.POST.get('email')
-    senha = request.POST.get('senha')
-    senhaconfirma = request.POST.get('senha-repete')
-    cod = randint(100, 10000)
-    is_active = True
+def add_user(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        usuario = request.POST.get('usuario')
+        email = request.POST.get('email')
+        senha = request.POST.get('senha')
+        senhaconfirma = request.POST.get('senha-repete')
+        is_active = True
 
-    User.objects.create_user(
-      username=usuario, email=email,
-      password=senha
-    )
-    return redirect('login')
-    
-  else:
-    return render(request,'pages/add-user.html') 
+        if not (name and usuario and email and senha and senhaconfirma):
+            messages.error(request, 'Por favor, preencha todos os campos.')
+            return render(request, 'pages/add-user.html')
+
+        if senha != senhaconfirma:
+            messages.error(request, 'As senhas não correspondem.')
+            return render(request, 'pages/add-user.html')
+
+        user = User.objects.create_user(
+            username=usuario, email=email,
+            password=senha, first_name=name, is_active=is_active
+        )
+        if user:
+            messages.success(request, 'Cadastro concluído com sucesso.', extra_tags='success')
+            return redirect('login')
+        else:
+            messages.error(request, 'Ocorreu um erro ao criar o usuário.')
+            return render(request, 'pages/add-user.html')
+
+    else:
+        return render(request, 'pages/add-user.html')
 
 def logout(request):
   auth.logout(request)

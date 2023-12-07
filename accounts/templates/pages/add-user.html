@@ -11,13 +11,33 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> Adicionar o malandro</h1>
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <h1>Registra-se</h1>
+            <a href="{% url 'home' %}" class="btn btn-primary mt-5 mb-1">voltar</a>
+        </nav>
+    </header>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %} alert-{{ message.tags }} {% endif %} mt-2">
+                <h3>{{ message }}</h3>
+            </div>
+        {% endfor %}
+        <script>
+            setTimeout(function() {
+                var alerts = document.querySelectorAll('.alert');
+                alerts.forEach(function(alert) {
+                    alert.style.display = 'none';
+                });
+            }, 3000); 
+        </script>
+    {% endif %}
     <form method="POST"  class="container mt-5" enctype="multipart/form-data">{% csrf_token %}
         <input type="text" name="name" placeholder="Nome"><br>
         <input type="text" name="usuario" placeholder="Usuário"><br>
         <input type="text" name="email" placeholder="Email"><br>
-        <input type="text" name="senha" placeholder="Senha"><br>
-        <input type="text" name="senha-repete" placeholder="Repita sua senha"><br>
+        <input type="password" name="senha" placeholder="Senha"><br>
+        <input type="password" name="senha-repete" placeholder="Repita sua senha"><br>
         <button type="submit">Salvar</button>
     </form>
 </body>

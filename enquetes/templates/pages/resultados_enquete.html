@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar">
+            <div class="logo">
+                <h1>Adicionar a enquete</h1>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="{% url 'add-pergunta' %}" class="nav-link">Nova enquete</a></li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a href="{% url 'minhas_enquetes' %}" class="nav-link"> Minhas enquetes</a></li>
+                    {% endif %}
+                    <li class="nav-item"><a href="{% url 'resultados' %}" class="nav-link"> Resultados</a></li>
+                </ul>
+            </div>
+            
+            {% if user.is_authenticated %}
+                <div class="logout-button">
+                    <button><a href="{% url 'logout' %}" class="btn btn-primary mt-5 mb-1">Sair</a></button>
+                </div>
+            {% else %}
+                <div class="login-button">
+                    <button><a href="{% url 'login' %}" class="btn btn-primary mt-5 mb-1">Login</a></button>
+                </div>
+            {% endif %}
+    
+            <div class="mobile-menu-icon">
+                <button onclick="menuShow()"><img class="icon" src="media/img/menu_white_36dp.svg" alt=""></button>
+            </div>
+        </nav>
+        <div class="mobile-menu">
+            <ul>
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="{% url 'add-pergunta' %}" class="nav-link">Nova enquete</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a href="{% url 'minhas_enquetes' %}" class="nav-link"> Minhas enquetes</a></li>
+                {% endif %}
+                <li class="nav-item"><a href="{% url 'resultados' %}" class="nav-link"> Resultados</a></li>
+            </ul>
+    
+            {% if user.is_authenticated %}
+                <div class="logout-button">
+                    <button><a href="{% url 'logout' %}">Sair</a></button>
+                </div>
+            {% else %}
+                <div class="login-button">
+                    <button><a href="{% url 'login' %}">Login</a></button>
+                </div>
+            {% endif %}
+        </div>
+    </header>
+   
+    <h1>Resultados da Enquete "{{ pergunta.titulo }}"</h1>
+
+<p>Total de Respostas: {{ pergunta.total_respostas }}</p>
+<p>Resultado: {{ pergunta.resultado }}</p>
+ 
+</body>
+</html>

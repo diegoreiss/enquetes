@@ -22,3 +22,12 @@ Em seguida, aplique as migrações:
 Agora você pode iniciar o servidor de desenvolvimento:
 
     $ python manage.py runserver
+
+
+variáveis de ambiente do arquivo .env (Lembre-se de criar o arquivo):
+    
+    EMAIL_SENDER_SMTP_SSL=
+    EMAIL_SENDER_NAME=
+    EMAIL_SENDER_PASSWORD=
+    EMAIL_SENDER_PORT=
+    EMAIL_SENDER_SMTP_SSL=
