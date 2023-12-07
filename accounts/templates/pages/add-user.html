@@ -14,8 +14,7 @@
 <body>
     <header>
         <nav class="navbar navbar-light bg-light">
-            <h1>Registra-se</h1>
-            <a href="{% url 'home' %}" class="btn btn-primary mt-5 mb-1">voltar</a>
+            <h1>Registro</h1>
         </nav>
     </header>
     {% if messages %}
@@ -33,22 +32,19 @@
             }, 3000); 
         </script>
     {% endif %}
-    <form method="POST"  class="container mt-5" enctype="multipart/form-data">{% csrf_token %}
-        <input type="text" name="name" placeholder="Nome"><br>
-        <input type="text" name="usuario" placeholder="Usuário"><br>
-        <input type="text" name="email" placeholder="Email"><br>
-        <input type="text" name="senha" placeholder="Senha"><br>
-        <input type="text" name="senha-repete" placeholder="Repita sua senha"><br>
-        <button type="submit">Salvar</button>
-    </form> -->
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-7" class="container-form">
                 <h2 class="mb-4">Formulário de Registro</h2>
-                <form>
+                <form method="post"> {% csrf_token %}
                     <div class="form-group">
                         <label for="name">Nome:</label>
                         <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Usuario</label>
+                        <input type="text" class="form-control" id="name" name="usuario" required>
                     </div>
     
                     <div class="form-group">
@@ -58,16 +54,16 @@
     
                     <div class="form-group">
                         <label for="password">Senha:</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control" id="password" name="senha" required>
                     </div>
     
                     <div class="form-group">
                         <label for="confirm-password">Confirme a Senha:</label>
-                        <input type="password" class="form-control" id="confirm-password" name="confirm-password" required>
+                        <input type="password" class="form-control" id="confirm-password" name="senha-repete" required>
                     </div>
     
                     <button type="submit" class="btn btn-primary">Registrar</button>
-                    <button type="button" class="btn btn-primary">Voltar</button>
+                    <a href="{% url 'home' %}" type="button" class="btn btn-primary">Voltar</a>
                 </form>
             </div>
         </div>
