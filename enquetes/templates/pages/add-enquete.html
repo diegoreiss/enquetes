@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-   
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
     
     <title>Document</title>
 </head>
@@ -14,10 +14,10 @@
 <body>
     <header>
         <nav class="navbar navbar-light bg-light">
-            <h1> Adicionar a enquete</h1>
-            <a href="{% url 'logout' %}" class="btn btn-primary mt-5 mb-1">Sair</a>
-            <a href="{% url 'home' %}" class="btn btn-primary mt-5 mb-1">voltar</a>
-            <a href="{% url 'minhas_enquetes' %}" class="btn btn-primary mt-5 mb-1">Minhas enquetes</a>
+            <h1>  Adicionar a enquete</h1>
+            <a href="{% url 'logout' %}" class="btn btn-danger mt-5 mb-1 ml-auto">Sair</a>
+            <a href="{% url 'home' %}" class="btn btn-secondary mt-5 mb-1 ml-2">voltar</a>
+            <a href="{% url 'minhas_enquetes' %}" class="btn btn-warning mt-5 mb-1 ml-2">Minhas enquetes</a>
         </nav>
     </header>
     <form method="post">
