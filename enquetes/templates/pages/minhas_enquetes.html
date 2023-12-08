@@ -1,4 +1,4 @@
-!{% load static%}
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +56,8 @@
             <tbody>
                 {% for pergunta in perguntas %}
                     <tr>
-                        <td><a href="{% url 'desativar_enquete' pergunta.id  %}" class="btn btn-primary">Fechar</a></td>
+                        <td><a href="{% url 'desativar_enquete' pergunta.id  %}" class="btn btn-danger
+                            ">Encerrar</a></td>
                         <td>{{ pergunta.id }}</td>
                         <td>{{ pergunta.user.first_name }}</td>
                         <td>{{ pergunta.titulo }}</td>

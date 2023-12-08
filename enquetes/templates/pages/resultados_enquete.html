@@ -12,19 +12,23 @@
 </head>
 
 <body>
+    
     <header>
         <nav class="navbar navbar-light bg-light">
-            <h1> Adicionar a enquete</h1>
-            <a href="{% url 'logout' %}" class="btn btn-primary mt-5 mb-1">Sair</a>
-            <a href="{% url 'home' %}" class="btn btn-primary mt-5 mb-1">voltar</a>
-            <a href="{% url 'minhas_enquetes' %}" class="btn btn-primary mt-5 mb-1">Minhas enquetes</a>
+            <h1 class="navbar-brand"> Adicionar a enquete</h1>
+            <a href="{% url 'logout' %}" class="btn btn-danger mt-5 mb-1 ml-auto">Sair</a>
+            <a href="{% url 'home' %}" class="btn btn-secondary mt-5 mb-1 ml-2">voltar</a>
+            <a href="{% url 'minhas_enquetes' %}" class="btn btn-warning mt-5 mb-1 ml-2">Minhas enquetes</a>
         </nav>
     </header>
-   
-    <h1>Resultados da Enquete "{{ pergunta.titulo }}"</h1>
+   <main class="container mx-auto">
+    
+    <div class="d-flex justify-content-center"><h1 class="font-weight-light">Resultados da Enquete "{{ pergunta.titulo }}"</h1> </div>
+        
+       <div class="d-flex justify-content-center" ><h4 class="font-weight-light">Total de Respostas: {{ pergunta.total_respostas }}</h4></div> 
+       <div class="d-flex justify-content-center"> <h4 class="font-weight-light">Resultado: {{ pergunta.resultado }}</h4></div>
 
-<p>Total de Respostas: {{ pergunta.total_respostas }}</p>
-<p>Resultado: {{ pergunta.resultado }}</p>
- 
+   
+    </main>
 </body>
 </html>

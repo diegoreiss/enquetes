@@ -17,6 +17,16 @@ alert {
     width: 600px;
 }
 
+.table thead th {
+
+    border-bottom: 2px solid #0a0a0a;
+}
+
+.table td, .table th {
+   
+    border-top: 1px solid #0d0d0e;
+}
+
 @media (max-width: 768px) {
     .custom-navbar {
         flex-direction: column;

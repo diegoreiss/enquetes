@@ -13,5 +13,16 @@ body {
    
 }
 
+.table thead th {
+
+    border-bottom: 2px solid #0a0a0a;
+}
+
+.table td, .table th {
+   
+    border-top: 1px solid #0d0d0e;
+}
+
+
 
 
